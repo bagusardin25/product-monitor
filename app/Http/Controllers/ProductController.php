@@ -20,6 +20,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+        return view('Products.create');
     }
 
     /**
@@ -43,7 +44,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('Products.edit');
     }
 
     /**

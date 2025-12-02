@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create</title>
 </head>
 <body>
-    <h1>PRODUCK</h1>
-        <table border="2">
+    <h1>Tambah data</h1>
+    <div>Create</div>
+    <table>
         <tr>
             <th>Nama</th>
             <th>Nama</th>
             <th>Nama</th>
             <th>Nama</th>
         </tr>
-            <td>gh</td>
-            <td>gh</td>
-            <td>gh</td>
-            <td>gh</td>
     </table>
-    <div>index</div>
-    <a href="{{  route('tambah')}}">Tambah Product</a>
+    <a href="">Tambah</a>
+    <a href="{{  route('product')}}">Kembali</a>
 </body>
 </html>

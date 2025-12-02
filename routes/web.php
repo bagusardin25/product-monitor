@@ -8,3 +8,4 @@ Route::get('/', function () {
 });
 
 Route::get('/product', [ProductController::class, 'index'])->name('product');
+Route::get('/create', [ProductController::class, 'create'])->name('tambah');
