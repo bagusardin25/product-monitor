@@ -12,7 +12,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index');
+        $products = Product::all();
+        return view('products.index', ['products'=>$products]);
     }
 
     /**
@@ -36,7 +37,7 @@ class ProductController extends Controller
             'description' => 'nullable'
         ]);
         $newProduct = Product::create($data);
-        return redirect(route('products.index'));
+        return redirect(route('product'));
     }
 
     /**
