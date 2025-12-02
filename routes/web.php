@@ -9,3 +9,6 @@ Route::get('/', function () {
 
 Route::get('/product', [ProductController::class, 'index'])->name('product');
 Route::get('/create', [ProductController::class, 'create'])->name('tambah');
+Route::post('/store', [ProductController::class, 'store'])->name('product.store');
+Route::get('{product}/edit', [ProductController::class, 'edit'])->name('edit');
+
