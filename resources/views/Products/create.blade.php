@@ -27,11 +27,11 @@
         </div>
         <div>
             <label>Qty</label>
-            <input type="text" name="qty" placeholder="Qty"/>
+            <input type="number" name="qty" placeholder="Qty"/>
         </div>
         <div>
             <label>Price</label>
-            <input type="text" name="price" placeholder="Price"/>
+            <input type="number" name="price" placeholder="Price"/>
         </div>
         <div>
             <label>Description</label>

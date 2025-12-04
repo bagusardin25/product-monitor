@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Halaman edit</h1>
-    <form action="{{ route('product.update')  }}">
+    <form action="{{ route('product.update', $product->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div>
@@ -17,11 +17,11 @@
         </div>
         <div>
             <label>Qty</label>
-            <input type="text" name="qty" placeholder="Qty" value="{{ $product->qty }}" />
+            <input type="number" name="qty" placeholder="Qty" value="{{ $product->qty }}" />
         </div>
         <div>
             <label>Price</label>
-            <input type="text" name="price" placeholder="Price" value="{{ $product->Price }}" />
+            <input type="number" name="price" placeholder="Price" value="{{ $product->price }}" />
         </div>
         <div>
             <label>Descriptipn</label>
