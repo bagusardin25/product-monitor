@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Halaman edit</h1>
-    <form action="{{ route('product.update', $product->id) }}" method="POST">
+    <form action="{{ route('update', $product->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div>

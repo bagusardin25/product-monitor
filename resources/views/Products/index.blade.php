@@ -19,6 +19,8 @@
             <th>Qty</th>
             <th>Price</th>
             <th>Description</th>
+            <th>Created At</th>
+            <th>Updated At</th>
             <th>Show</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -30,11 +32,13 @@
             <td>{{ $product->qty }}</td>
             <td>{{ $product->price }}</td>
             <td>{{ $product->description }}</td>
+            <td>{{ $product->created_at }}</td>
+            <td>{{ $product->updated_at }}</td>
             <td>
                 <a href="{{ route('show', $product->id) }}">View</a>
             </td>
             <td>
-                 <a href="{{route('product.edit', ['product' => $product])}}">Edit</a>
+                 <a href="{{route('edit', ['product' => $product])}}">Edit</a>
             </td>
             <td>
                 <form method="post" action="{{route('destroy', ['product' => $product])}}">@csrf @method('delete') <input type="submit" value="Delete"></form>
