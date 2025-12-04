@@ -1,33 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Halaman edit</h1>
-    <form action="{{ route('update', $product->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <div>
-            <label>Name</label>
-            <input type="text" name="name" placeholder="name" value="{{ $product->name }}" />
+@extends('layouts.app')
+
+@section('content')
+<div class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="md:col-span-1">
+        <div class="px-4 sm:px-0">
+            <h3 class="text-lg font-medium leading-6 text-gray-900">Ubah Produk</h3>
+            <p class="mt-1 text-sm text-gray-600">Perbarui informasi produk.</p>
         </div>
-        <div>
-            <label>Qty</label>
-            <input type="number" name="qty" placeholder="Qty" value="{{ $product->qty }}" />
+    </div>
+    <div class="mt-5 md:col-span-2 md:mt-0">
+        
+        @if ($errors->any())
+        <div class="rounded-md bg-red-50 p-4 mb-6">
+            <div class="flex">
+                <div class="shrink-0">
+                    <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="ml-3">
+                    <h3 class="text-sm font-medium text-red-800">Terdapat kesalahan pada input Anda</h3>
+                    <div class="mt-2 text-sm text-red-700">
+                        <ul role="list" class="list-disc pl-5 space-y-1">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <label>Price</label>
-            <input type="number" name="price" placeholder="Price" value="{{ $product->price }}" />
-        </div>
-        <div>
-            <label>Descriptipn</label>
-            <input type="text" name="description" placeholder="name" value="{{ $product->description }}" />
-        </div>
-    </form>
-    <a href="{{  route('product')}}">Kembali</a>
-</body>
-</html>
+        @endif
+
+        <form action="{{ route('update', $product->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="shadow sm:overflow-hidden sm:rounded-md">
+                <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
+                    <div class="grid grid-cols-6 gap-6">
+                        <div class="col-span-6 sm:col-span-4">
+                            <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
+                            <input type="text" name="name" id="name" value="{{ $product->name }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2">
+                        </div>
+
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="qty" class="block text-sm font-medium text-gray-700">Jumlah</label>
+                            <input type="number" name="qty" id="qty" value="{{ $product->qty }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2">
+                        </div>
+
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="price" class="block text-sm font-medium text-gray-700">Harga</label>
+                            <input type="number" name="price" id="price" value="{{ $product->price }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2">
+                        </div>
+
+                        <div class="col-span-6">
+                            <label for="description" class="block text-sm font-medium text-gray-700">Deskripsi</label>
+                            <div class="mt-1">
+                                <textarea id="description" name="description" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm border p-2">{{ $product->description }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 text-right sm:px-6 flex justify-end gap-3">
+                    <a href="{{ route('product') }}" class="inline-flex justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Batal</a>
+                    <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Perbarui</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection
