@@ -19,6 +19,7 @@
             <th>Qty</th>
             <th>Price</th>
             <th>Description</th>
+            <th>Show</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -29,6 +30,9 @@
             <td>{{ $product->qty }}</td>
             <td>{{ $product->price }}</td>
             <td>{{ $product->description }}</td>
+            <td>
+                <a href="{{ route('show', $product->id) }}">View</a>
+            </td>
             <td>
                  <a href="{{route('product.edit', ['product' => $product])}}">Edit</a>
             </td>
