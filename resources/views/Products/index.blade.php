@@ -6,7 +6,7 @@
     <title>Product</title>
 </head>
 <body>
-    <h1>PRODUCK</h1>
+    <h1>Product</h1>
         @if (session()->has('success'))
             <div>
                 {{ session('success') }}
@@ -29,12 +29,15 @@
             <td>{{ $product->qty }}</td>
             <td>{{ $product->price }}</td>
             <td>{{ $product->description }}</td>
-            {{-- <td><a href="{{ route('products.edit', 1) }}">Edit</a></td> --}}
-            <td>urung mas</td>
-            <td>urung mas</td>
+            <td>
+                 <a href="{{route('product.edit', ['product' => $product])}}">Edit</a>
+            </td>
+            <td>
+                <form method="post" action="{{route('destroy', ['product' => $product])}}">@csrf @method('delete') <input type="submit" value="Delete"></form>
+            </td>
         </tr>
         @endforeach
     </table>
-    <a href="{{  route('tambah')}}">Tambah Product</a>
+    <a href="{{  route('tambah')}}">Tambah</a>
 </body>
 </html>
