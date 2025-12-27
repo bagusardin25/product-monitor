@@ -37,7 +37,7 @@ class ProductController extends Controller
             'description' => 'nullable'
         ]);
         $newProduct = Product::create($data);
-        return redirect(route('product'));
+        return redirect(route('products.index'));
     }
 
     /**
@@ -71,7 +71,7 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return redirect(route('product'))->with('success', 'Product Updated Succesffully');
+        return redirect(route('products.index'))->with('success', 'Product Updated Succesffully');
     }
 
     /**
@@ -80,6 +80,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect(route('product'))->with('succes', 'Product Delete Succesffully');
+        return redirect(route('products.index'))->with('success', 'Product Deleted Successfully');
     }
 }

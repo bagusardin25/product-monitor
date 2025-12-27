@@ -7,7 +7,7 @@
         <p class="mt-2 text-sm text-gray-700">Daftar semua produk di akun Anda termasuk nama, harga, dan jumlah.</p>
     </div>
     <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-        <a href="{{ route('tambah') }}" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+        <a href="{{ route('products.create') }}" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
             Tambah Produk
         </a>
     </div>
@@ -39,9 +39,9 @@
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $product->price }}</td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $product->description }}</td>
                             <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 space-x-2">
-                                <a href="{{ route('show', $product->id) }}" class="text-indigo-600 hover:text-indigo-900">Lihat</a>
-                                <a href="{{ route('edit', ['product' => $product]) }}" class="text-amber-600 hover:text-amber-900">Ubah</a>
-                                <form method="post" action="{{ route('destroy', ['product' => $product]) }}" class="inline-block" onsubmit="return confirm('Apakah Anda yakin?')">
+                                <a href="{{ route('products.show', $product->id) }}" class="text-indigo-600 hover:text-indigo-900">Lihat</a>
+                                <a href="{{ route('products.edit', ['product' => $product]) }}" class="text-amber-600 hover:text-amber-900">Ubah</a>
+                                <form method="post" action="{{ route('products.destroy', ['product' => $product]) }}" class="inline-block" onsubmit="return confirm('Apakah Anda yakin?')">
                                     @csrf 
                                     @method('delete') 
                                     <button type="submit" class="text-red-600 hover:text-red-900">Hapus</button>
