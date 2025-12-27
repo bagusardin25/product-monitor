@@ -9,9 +9,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('products', ProductController::class)->except(['index', 'show']);
+});
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('products', ProductController::class);
+    
+    Route::resource('products', ProductController::class)->only(['index', 'show']);
 });
 
 Route::middleware('auth')->group(function () {
