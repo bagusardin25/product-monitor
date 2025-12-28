@@ -28,5 +28,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
             'role' => 'admin',
         ]);
+
+        \App\Models\Product::factory(10)->create();
     }
 }
